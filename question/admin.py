@@ -7,5 +7,5 @@ class AnswerInline(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [AnswerInline]
-admin.site.register(Question)
+admin.site.register(Question , QuestionAdmin)
 admin.site.register(Answer)

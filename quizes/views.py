@@ -9,4 +9,4 @@ class QuizList(ListView):
 
 def quiz_detail(request , pk):
     quiz = Quizes.objects.get(pk=pk)
-    return render(request , 'quizes/quiz_detail.html' , {'quiz':quiz})
+    return render(request , 'quizes/quiz_detail.html' , {'obj':quiz})

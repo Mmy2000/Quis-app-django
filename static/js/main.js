@@ -3,6 +3,8 @@ const modalBody = document.getElementById('modal-body-confirm')
 const startBtn = document.getElementById('startBtn')
 const url = window.location.href
 const url2 = window.location.href
+const quizBox = document.getElementById('quizBox')
+let data
 modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
     const pk = modalBtn.getAttribute('data-pk')
     const name = modalBtn.getAttribute('data-quiz')
@@ -34,6 +36,13 @@ $.ajax({
     url: `${url}data`,
     success: function (response) {
         console.log(response);
+        data = response.data
+        data.forEach(el =>{
+            for (const [question , answers] of Object.entries(el)) {
+                console.log(question);
+                console.log(answers);
+            }
+        })
     },
     error:function(error){
         console.log(error);

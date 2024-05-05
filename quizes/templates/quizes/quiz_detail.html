@@ -4,4 +4,10 @@
 {% endblock title %}
 {% block content %}
 {{obj.name}}
+<hr>
+<form class="mt-3 mb-3" id="quiz-form">
+    {% csrf_token %}
+    <div id="quizBox"></div>
+    <button class="btn btn-primary mt-3">Save</button>
+</form>
 {% endblock content %}

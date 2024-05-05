@@ -2,7 +2,7 @@ const modalBtn = [...document.getElementsByClassName('modal-button')]
 const modalBody = document.getElementById('modal-body-confirm')
 const startBtn = document.getElementById('startBtn')
 const url = window.location.href
-
+const url2 = window.location.href
 modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
     const pk = modalBtn.getAttribute('data-pk')
     const name = modalBtn.getAttribute('data-quiz')
@@ -25,3 +25,17 @@ modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
 }) 
     
 );
+
+// data auiz view
+
+
+$.ajax({
+    type: "GET",
+    url: `${url}data`,
+    success: function (response) {
+        console.log(response);
+    },
+    error:function(error){
+        console.log(error);
+    }
+});

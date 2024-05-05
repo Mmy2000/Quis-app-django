@@ -20,12 +20,13 @@ home
                 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                <button type="button" id="startBtn" class="btn btn-success">Yes</button>
             </div>
         </div>
     </div>
 </div>
+
 <div class="h1">
     Quiz List
 </div>
@@ -41,6 +42,6 @@ home
     data-bs-toggle="modal" 
     data-bs-target="#quizStartModal">
     {{obj.name}}
-</button>
+</button><br>
 {% endfor %}
 {% endblock content %}

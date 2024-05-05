@@ -1,5 +1,7 @@
 const modalBtn = [...document.getElementsByClassName('modal-button')]
 const modalBody = document.getElementById('modal-body-confirm')
+const startBtn = document.getElementById('startBtn')
+const url = window.location.href
 
 modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
     const pk = modalBtn.getAttribute('data-pk')
@@ -18,6 +20,8 @@ modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
     <li>Time: <b>${time} min</b></li>
     </ul>
     </div>`
+    startBtn.addEventListener('click' , ()=>{
+        window.location.href = url + pk    })
 }) 
     
 );

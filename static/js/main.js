@@ -4,7 +4,6 @@ const startBtn = document.getElementById('startBtn')
 const url = window.location.href
 const url2 = window.location.href
 const quizBox = document.getElementById('quizBox')
-let data
 modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
     const pk = modalBtn.getAttribute('data-pk')
     const name = modalBtn.getAttribute('data-quiz')
@@ -36,7 +35,7 @@ $.ajax({
     url: `${url}data`,
     success: function (response) {
         console.log(response);
-        data = response.data
+        const data = response.data
         data.forEach(el =>{
             for (const [question , answers] of Object.entries(el)) {
                 quizBox.innerHTML += `

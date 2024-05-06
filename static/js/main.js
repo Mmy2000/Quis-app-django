@@ -30,9 +30,9 @@ modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
 const url2 = window.location.href
 const quizBox = document.getElementById('quizBox')
 const quizForm = document.getElementById('quiz-form')
-const csrf = document.getElementsByClassName('csrfmiddlewaretoken')
-const element = [...document.getElementsByClassName('ans')]
+const csrf = document.querySelector('[name=csrfmiddlewaretoken]')
 
+console.log('csrf' + csrf.value);
 $.ajax({
     type: "GET",
     url: `${url}data`,
@@ -64,7 +64,29 @@ $.ajax({
 });
 
 const sendData = () =>{
-
+    const elements = [...document.getElementsByClassName('ans')]
+    const data = {}
+    data['csrfmiddlewaretoken'] = csrf.value
+    elements.forEach(el=>{
+        if (el.checked) {
+            data[el.name] = el.value
+        } else{
+            if (!data[el.name]) {
+                data[el.name] = null
+            }
+        }
+    })
+    $.ajax({
+        type:"POST",
+        url:`${url2}save/`,
+        data:data,
+        success:function(response){
+            console.log(response);
+        },
+        error:function(error){
+            console.log(error);
+        }
+    })
 }
 
 quizForm.addEventListener('submit' , e=>{

@@ -2,8 +2,7 @@ const modalBtn = [...document.getElementsByClassName('modal-button')]
 const modalBody = document.getElementById('modal-body-confirm')
 const startBtn = document.getElementById('startBtn')
 const url = window.location.href
-const url2 = window.location.href
-const quizBox = document.getElementById('quizBox')
+
 modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
     const pk = modalBtn.getAttribute('data-pk')
     const name = modalBtn.getAttribute('data-quiz')
@@ -28,7 +27,11 @@ modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
 );
 
 // data auiz view
-
+const url2 = window.location.href
+const quizBox = document.getElementById('quizBox')
+const quizForm = document.getElementById('quiz-form')
+const csrf = document.getElementsByClassName('csrfmiddlewaretoken')
+const element = [...document.getElementsByClassName('ans')]
 
 $.ajax({
     type: "GET",
@@ -59,3 +62,12 @@ $.ajax({
         console.log(error);
     }
 });
+
+const sendData = () =>{
+
+}
+
+quizForm.addEventListener('submit' , e=>{
+    e.preventDefault()
+    sendData()
+})

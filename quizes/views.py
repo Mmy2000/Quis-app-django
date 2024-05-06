@@ -3,6 +3,7 @@ from .models import Quizes
 from django.views.generic import ListView
 from django.http import JsonResponse
 from question.models import Question , Answer
+from result.models import Result
 # Create your views here.
 
 class QuizList(ListView):
@@ -65,6 +66,10 @@ def save_quiz_view(request , pk):
                 results.append({str(q): {'correct_answer':correct_answer,'answered':a_selected}})
             else:
                 results.append({str(q):'not answered'})
+        score_ = score * multiplier
+        Result.objects.create(quiz=quiz , user=user , score=score_)
 
-
-    return JsonResponse({'text':'works'})
+        if score_ >= quiz.required_scored_to_pass:
+            return JsonResponse({'passed':True , 'score':score_ , 'results':results})
+        else:
+            return JsonResponse({'passed':False , 'score':score_ , 'results':results})

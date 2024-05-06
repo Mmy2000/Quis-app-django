@@ -27,12 +27,10 @@ modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
 );
 
 // data auiz view
-const url2 = window.location.href
 const quizBox = document.getElementById('quizBox')
 const quizForm = document.getElementById('quiz-form')
 const csrf = document.querySelector('[name=csrfmiddlewaretoken]')
 
-console.log('csrf' + csrf.value);
 $.ajax({
     type: "GET",
     url: `${url}data`,
@@ -78,7 +76,7 @@ const sendData = () =>{
     })
     $.ajax({
         type:"POST",
-        url:`${url2}save/`,
+        url:`${url}save/`,
         data:data,
         success:function(response){
             console.log(response);
@@ -93,3 +91,5 @@ quizForm.addEventListener('submit' , e=>{
     e.preventDefault()
     sendData()
 })
+
+console.log(url);

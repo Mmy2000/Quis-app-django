@@ -24,7 +24,15 @@ def quiz_data_view(request,pk):
         'data':questions ,
         'time': quiz.time
     })
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 def save_quiz_view(request , pk):
-    print(request.POST)
+    # print(request.POST)
+    if is_ajax(request=request):
+        data = request.POST
+        data_ = dict(data.lists())
+        print(data_)
+        data_.pop('csrfmiddlewaretoken')
+        print(data_)
     return JsonResponse({'text':'works'})

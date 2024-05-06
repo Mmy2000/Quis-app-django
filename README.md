@@ -1,1 +1,1 @@
-# Quis-app-django
+# Quiz-app-django

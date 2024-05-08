@@ -14,7 +14,7 @@
 
 <a href="{% url 'quizes:QuizList' %}" class="btn btn-outline-danger mb-2">Go back</a>
 
-<form class="mt-3 mb-3" id="quiz-form">
+<form class="mt-3 mb-3 shadow-lg p-2" id="quiz-form">
     {% csrf_token %}
     <div id="quizBox"></div>
     <button class="btn btn-primary mt-3">Save</button>

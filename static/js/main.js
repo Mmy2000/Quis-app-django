@@ -36,7 +36,6 @@ $.ajax({
     type: "GET",
     url: `${url}data`,
     success: function (response) {
-        console.log(response);
         const data = response.data
         data.forEach(el =>{
             for (const [question , answers] of Object.entries(el)) {
@@ -82,15 +81,12 @@ const sendData = () =>{
         success:function(response){
             
             const results = response.results
-            console.log(results);
             quizForm.classList.add("d-none")
 
             results.forEach(res=>{
                 const resDev = document.createElement('dev')
                 for (const [question , resp] of Object.entries(res)){
-                    // console.log(question);
-                    // console.log(resp);
-                    // console.log("*****");
+        
                     resDev.innerHTML += question
                     const cls = ['container' ,'d-flex' , 'p-3' , 'text-light' , 'h3']
                     resDev.classList.add(...cls)
@@ -101,7 +97,6 @@ const sendData = () =>{
                     }else{
                         const answer = resp['answered']
                         const correct = resp['correct_answer']
-                        console.log(answer , correct);
 
                         if (answer == correct) {
                             resDev.classList.add('bg-success')

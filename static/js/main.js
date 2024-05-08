@@ -85,14 +85,14 @@ const sendData = () =>{
             const results = response.results
             quizForm.classList.add("d-none")
 
-            scoreBox.innerHTML = `${response.passed ? 'Congratulations ' : 'Ops..:( '}Your result is ${response.score}%`
+            scoreBox.innerHTML = `${response.passed ? 'Congratulations ' : 'Ops..:( '}Your result is ${response.score.toFixed(2)}%`
 
             results.forEach(res=>{
                 const resDev = document.createElement('dev')
                 for (const [question , resp] of Object.entries(res)){
         
                     resDev.innerHTML += question
-                    const cls = ['container' ,'d-flex' , 'p-3' , 'text-light' , 'h3']
+                    const cls = ['container' ,'d-flex' , 'p-3' , 'text-light' , 'h5']
                     resDev.classList.add(...cls)
 
                     if (resp == "not answered"){

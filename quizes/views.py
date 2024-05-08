@@ -39,10 +39,10 @@ def save_quiz_view(request , pk):
         data_.pop('csrfmiddlewaretoken')
 
         for k in data_.keys():
-            print('key :',k)
+            # print('key :',k)
             question = Question.objects.get(text = k)
             questions.append(question)
-        print(questions)
+        # print(questions)
         user = request.user
         quiz = Quizes.objects.get(pk=pk)
 

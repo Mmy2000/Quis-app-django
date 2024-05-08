@@ -32,7 +32,49 @@ const quizBox = document.getElementById('quizBox')
 const quizForm = document.getElementById('quiz-form')
 const scoreBox = document.getElementById('scoreBox')
 const resultBox = document.getElementById('resultBox')
+const timerBox = document.getElementById('timerBox')
 const csrf = document.querySelector('[name=csrfmiddlewaretoken]')
+
+const activateTimer = (time)=>{
+    if (time.toString().length < 2) {
+        timerBox.innerHTML = `<b>0${time}:00</b>`
+    }else{
+        timerBox.innerHTML = `<b>${time}:00</b>`
+    }
+    let minutes = time - 1
+    let seconds = 60
+    let displayMinutes
+    let displaySecond
+
+    const timer = setInterval( ()=>{
+        seconds --
+        if (seconds < 0 ) {
+            seconds = 59,
+            minutes --
+        }
+        if (minutes.toString().length < 2) {
+            displayMinutes = "0"+minutes
+        }else{
+            displayMinutes = minutes
+        }
+        if (seconds.toString().length < 2) {
+            displaySecond = '0'+seconds
+        }else{
+            displaySecond = seconds
+        }
+        if (minutes === 0 && seconds ===0) {
+            timerBox.innerHTML = '<b>00:00</b>'
+            setTimeout(()=>{
+                clearInterval(timer)
+            alert("Time Over")
+            sendData()
+            })
+            
+        }
+        timerBox.innerHTML = `<b>${displayMinutes}:${displaySecond}</b>`
+    },1000)
+
+}
 
 $.ajax({
     type: "GET",
@@ -57,6 +99,7 @@ $.ajax({
                 });
             }
         })
+        activateTimer(response.time)
     },
     error:function(error){
         console.log(error);
@@ -127,4 +170,3 @@ quizForm.addEventListener('submit' , e=>{
     sendData()
 })
 
-console.log(url);

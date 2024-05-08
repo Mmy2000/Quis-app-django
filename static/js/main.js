@@ -88,9 +88,21 @@ const sendData = () =>{
             results.forEach(res=>{
                 const resDev = document.createElement('dev')
                 for (const [question , resp] of Object.entries(res)){
-                    console.log(question);
-                    console.log(resp);
-                    console.log("*****");
+                    // console.log(question);
+                    // console.log(resp);
+                    // console.log("*****");
+                    resDev.innerHTML += question
+                    const cls = ['container' , 'p-3' , 'text-light' , 'h3']
+                    resDev.classList.add(...cls)
+
+                    if (resp == "not answered"){
+                        resDev.innerHTML += '- not answered'
+                        resDev.classList.add('bg-danger')
+                    }else{
+                        const answer = resp['answered']
+                        const correct = resp['correct_answer']
+                        console.log(answer , correct);
+                    }
                 }
             })
         },

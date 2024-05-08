@@ -80,7 +80,19 @@ const sendData = () =>{
         url:`${url}save/`,
         data:data,
         success:function(response){
-            console.log(response);
+            
+            const results = response.results
+            console.log(results);
+            quizForm.classList.add("d-none")
+
+            results.forEach(res=>{
+                const resDev = document.createElement('dev')
+                for (const [question , resp] of Object.entries(res)){
+                    console.log(question);
+                    console.log(resp);
+                    console.log("*****");
+                }
+            })
         },
         error:function(error){
             console.log(error);

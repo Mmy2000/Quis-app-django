@@ -92,7 +92,7 @@ const sendData = () =>{
                     // console.log(resp);
                     // console.log("*****");
                     resDev.innerHTML += question
-                    const cls = ['container' , 'p-3' , 'text-light' , 'h3']
+                    const cls = ['container' ,'d-flex' , 'p-3' , 'text-light' , 'h3']
                     resDev.classList.add(...cls)
 
                     if (resp == "not answered"){
@@ -102,8 +102,19 @@ const sendData = () =>{
                         const answer = resp['answered']
                         const correct = resp['correct_answer']
                         console.log(answer , correct);
+
+                        if (answer == correct) {
+                            resDev.classList.add('bg-success')
+                            resDev.innerHTML += ` answered : ${answer}`
+                        }else{
+                            resDev.classList.add('bg-danger')
+                            resDev.innerHTML += ` | correct : ${correct}`
+                            resDev.innerHTML += ` | answered : ${answer}`
+                        }
                     }
                 }
+                const body = document.getElementsByTagName('BODY')[0]
+                body.append(resDev)
             })
         },
         error:function(error){

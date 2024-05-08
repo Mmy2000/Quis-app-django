@@ -30,6 +30,8 @@ modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
 // data auiz view
 const quizBox = document.getElementById('quizBox')
 const quizForm = document.getElementById('quiz-form')
+const scoreBox = document.getElementById('scoreBox')
+const resultBox = document.getElementById('resultBox')
 const csrf = document.querySelector('[name=csrfmiddlewaretoken]')
 
 $.ajax({
@@ -83,6 +85,8 @@ const sendData = () =>{
             const results = response.results
             quizForm.classList.add("d-none")
 
+            scoreBox.innerHTML = `${response.passed ? 'Congratulations ' : 'Ops..:( '}Your result is ${response.score}%`
+
             results.forEach(res=>{
                 const resDev = document.createElement('dev')
                 for (const [question , resp] of Object.entries(res)){
@@ -108,8 +112,8 @@ const sendData = () =>{
                         }
                     }
                 }
-                const body = document.getElementsByTagName('BODY')[0]
-                body.append(resDev)
+                // const body = document.getElementsByTagName('BODY')[0]
+                resultBox.append(resDev)
             })
         },
         error:function(error){

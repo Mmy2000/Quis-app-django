@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'quizes',
     'result',
     'accounts',
+    "django_bootstrap5",
 ]
 
 MIDDLEWARE = [

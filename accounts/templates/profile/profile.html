@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-5 mt-4 mb-4 p-3 d-flex justify-content-center">
-    <div class="card p-4">
+    <div class="card p-4 mt-4">
         <div class=" image d-flex flex-column justify-content-center align-items-center"> <button
                 class="btns btn-secondary"> <img src=" {% if profile.image %}{{profile.image.url}}{% else %}https://i.imgur.com/wvxPV9S.png{% endif %}"  class="rounded-circle w-100"  /></button> <span class="name mt-3">{{profile.full_name}}</span> <span
                 class="idd">{{profile.user.email}}</span>

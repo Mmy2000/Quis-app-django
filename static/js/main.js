@@ -175,3 +175,6 @@ quizForm.addEventListener('submit' , e=>{
     sendData()
 })
 
+setTimeout(function(){
+    $('#message').fadeOut('slow')
+},4000)

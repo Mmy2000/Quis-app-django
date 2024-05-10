@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
+from django.utils import timezone
+
 
 
 
@@ -11,8 +13,9 @@ class Profile(models.Model):
     phone_number = models.CharField(max_length=20)
     city = models.CharField(max_length=50)
     image = models.ImageField(upload_to='users/')
-    about = models.TextField(max_length=4000 , blank=True , null=True)
+    about = models.TextField(max_length=500 , blank=True , null=True)
     country = models.CharField(max_length=50 ,blank=True, null=True)
+    created_at = models.DateTimeField( default=timezone.now())
 
 
     def full_name(self):

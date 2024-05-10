@@ -69,6 +69,10 @@ const activateTimer = (time)=>{
             alert("Time Over")
             sendData()
             })
+        // if (sendData() == true) {
+        //     clearInterval(timer)
+        //     console.log("hello");
+        // }
             
         }
         timerBox.innerHTML = `<b>${displayMinutes}:${displaySecond}</b>`
@@ -157,6 +161,7 @@ const sendData = () =>{
                 }
                 // const body = document.getElementsByTagName('BODY')[0]
                 resultBox.append(resDev)
+                
             })
         },
         error:function(error){

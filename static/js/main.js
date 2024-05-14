@@ -34,7 +34,7 @@ const scoreBox = document.getElementById('scoreBox')
 const resultBox = document.getElementById('resultBox')
 const timerBox = document.getElementById('timerBox')
 const csrf = document.querySelector('[name=csrfmiddlewaretoken]')
-
+let timer = 0;
 const activateTimer = (time)=>{
     if (time.toString().length < 2) {
         timerBox.innerHTML = `<b>0${time}:00</b>`
@@ -46,7 +46,7 @@ const activateTimer = (time)=>{
     let displayMinutes
     let displaySecond
 
-    const timer = setInterval( ()=>{
+     timer = setInterval( ()=>{
         seconds --
         if (seconds < 0 ) {
             seconds = 59,
@@ -67,7 +67,7 @@ const activateTimer = (time)=>{
             setTimeout(()=>{
                 clearInterval(timer)
             alert("Time Over")
-            sendData()
+            sendData()          
             })
         // if (sendData() == true) {
         //     clearInterval(timer)
@@ -77,6 +77,7 @@ const activateTimer = (time)=>{
         }
         timerBox.innerHTML = `<b>${displayMinutes}:${displaySecond}</b>`
     },1000)
+    
 
 }
 
@@ -133,9 +134,13 @@ const sendData = () =>{
             quizForm.classList.add("d-none")
 
             scoreBox.innerHTML = `${response.passed ? 'Congratulations ' : 'Ops..:( '}Your result is ${response.score.toFixed(2)}%`
+///
+clearInterval(timer)
+
 
             results.forEach(res=>{
-                const resDev = document.createElement('dev')
+                const resDev = document.createElement('dev');
+
                 for (const [question , resp] of Object.entries(res)){
         
                     resDev.innerHTML += question

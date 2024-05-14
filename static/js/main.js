@@ -135,7 +135,7 @@ const sendData = () =>{
 
             scoreBox.innerHTML = `${response.passed ? 'Congratulations ' : 'Ops..:( '}Your result is ${response.score.toFixed(2)}%`
 ///
-clearInterval(timer)
+
 
 
             results.forEach(res=>{
@@ -166,6 +166,7 @@ clearInterval(timer)
                 }
                 // const body = document.getElementsByTagName('BODY')[0]
                 resultBox.append(resDev)
+                clearInterval(timer)
                 
             })
         },

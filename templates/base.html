@@ -34,10 +34,10 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login'%}">Login</a>
+          <a class="nav-link {% if request.path == '/accounts/login/' %}active2{% endif %}" href="{% url 'login'%}">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'accounts:signup'%}">Register</a>
+          <a class="nav-link {% if request.path == '/accounts/signup/' %}active2{% endif %}" href="{% url 'accounts:signup'%}">Register</a>
         </li>
         {% endif %}
       </ul>

@@ -7,16 +7,16 @@
 <div class="container ">
     <div class="row ">
         {% for quiz  in result %}
-        <div class="col-md-3 m-2 shadow">
-            <div class="inner m-2 ">
+        <div class="col-md-6 col-xl-3 col-lg-4 gy-4 ">
+            <div class="inner py-2 px-3 bg-light shadow-lg ">
                 <h3 class="text-center">{{quiz.quiz.name}}</h3>
                 <h5 class="text-secondary">Time : {{quiz.quiz.time}} min</h5>
                 <div class="d-flex justify-content-between align-items-center">
                     <h5 class="{% if quiz.score >= quiz.quiz.required_scored_to_pass %} text-success {% else %} text-danger {% endif %}">Score : {{quiz.score}}</h5>
                     {% if quiz.score >= quiz.quiz.required_scored_to_pass %}
-                        <span class="badge text-bg-success">Pass</span>
+                        <span class="badge text-bg-success">Passed</span>
                         {% else %}
-                        <span class="badge text-bg-danger">Fail</span>
+                        <span class="badge text-bg-danger">Failed</span>
                     {% endif %}
                 </div>
                 

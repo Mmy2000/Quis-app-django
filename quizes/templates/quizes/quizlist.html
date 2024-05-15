@@ -35,15 +35,24 @@ home
 <div class="container text-center">
     <div class="row ">
         {% for obj in object_list %}
-        <div class="col-md-3 m-2 shadow">
-            <div class="inner m-2 ">
+        <div class="col-md-6 col-xl-3 col-lg-4 gy-4  ">
+            <div class="inner py-2 bg-light shadow-lg ">
             <button type="button" class="btn btn-link modal-button" data-pk={{obj.pk}} data-quiz={{obj.name}}
                 data-questions={{obj.number_of_questions}} data-difficulty={{obj.diffculity}} data-time={{obj.time}}
                 data-pass={{obj.required_scored_to_pass}} data-bs-toggle="modal" data-bs-target="#quizStartModal">
                 {{obj.name}}
             </button>
-            <h6 class="text-secondary">Time : {{obj.time}} min</h6>
-            <h6 class="">Score to pass : {{obj.required_scored_to_pass}} %</h6>
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-secondary">Time : {{obj.time}} min</h6>
+            <h6 class="">Questions : {{obj.number_of_questions}}</h6>
+                </div>
+                <div class="col-6">
+                    <h6>Type : {{obj.diffculity}}</h6>
+                </div>
+            </div>
+            <h6 class="text-secondary-emphasis"><span class="text-danger">=></span> Required score to pass : {{obj.required_scored_to_pass}}%</h6>
+            
             </div>
         </div>
         {% endfor %}

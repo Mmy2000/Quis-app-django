@@ -86,3 +86,8 @@ hr .new1 {
 .date {
     background-color: #ccc
 }
+
+.active2{
+    font-weight: 700;
+    border-bottom: solid 2px black;
+}

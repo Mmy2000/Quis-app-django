@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar  fixed-top navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar bg-light shadow  fixed-top navbar-expand-lg ">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Quiz App</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,11 +23,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="/">Quizes</a>
+          <a class="nav-link {% if request.path == '/' %}active2{% endif %}" aria-current="page" href="/">Quizes</a>
         </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/profile/' %}active{% endif %}" href="{% url 'accounts:profile'%}">Profile</a>
+          <a class="nav-link {% if request.path == '/accounts/profile/' %} active2 {% endif %}" href="{% url 'accounts:profile'%}">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout'%}">Logout</a>

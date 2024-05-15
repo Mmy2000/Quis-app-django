@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render , redirect , get_object_or_404
 from .forms import SignupForm , UserForm , ProfileForm
 from .models import Profile
+from quizes.models import Quizes
+from result.models import Result
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login 
 from django.contrib.auth.decorators import login_required
@@ -121,3 +123,12 @@ def resetPassword(request):
             return redirect(reverse('accounts:resetPassword'))
     else:
         return render(request, 'registration/resetPassword.html')
+    
+def myQuizes(request):
+    quiz = Quizes.objects.filter(result__user=request.user)
+    result = Result.objects.filter( user=request.user)
+    context = {
+        'quiz':quiz,
+        'result':result
+    }
+    return render(request , 'profile/myQuizes.html' , context)

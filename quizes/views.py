@@ -4,8 +4,9 @@ from django.views.generic import ListView
 from django.http import JsonResponse
 from question.models import Question , Answer
 from result.models import Result
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 class QuizList(ListView):
@@ -21,6 +22,8 @@ def quiz_detail(request , pk):
 @login_required(login_url='login')
 def quiz_data_view(request,pk):
     quiz = Quizes.objects.get(pk=pk)
+    existing = Result.objects.filter(quiz = quiz,user=request.user).exists()
+
     questions = []
     for q in quiz.get_questions():
         answers = []
@@ -29,7 +32,8 @@ def quiz_data_view(request,pk):
         questions.append({str(q):answers})
     return JsonResponse({
         'data':questions ,
-        'time': quiz.time
+        'time': quiz.time,
+        'existing':existing,
     })
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'

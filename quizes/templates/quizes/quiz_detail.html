@@ -19,12 +19,13 @@
     </div>
 
 </div>
+{% include "includes/alerts.html" %}
 
 
 <form class="mt-2 mb-5 shadow-lg p-2" id="quiz-form">
     {% csrf_token %}
     <div id="quizBox"></div>
-    <button class="btn btn-primary mt-3">Save</button>
+    <button id="submitBtn" class="btn btn-primary mt-3">Save</button>
 </form>
 <div class="mb-2" id="scoreBox"></div>
 <div id="resultBox"></div>

@@ -2,7 +2,7 @@ const modalBtn = [...document.getElementsByClassName('modal-button')]
 const modalBody = document.getElementById('modal-body-confirm')
 const startBtn = document.getElementById('startBtn')
 const url = window.location.href
-
+const submitBtn = document.getElementById('submitBtn')
 modalBtn.forEach(modalBtn => modalBtn.addEventListener("click" , ()=>{
 
     const pk = modalBtn.getAttribute('data-pk')
@@ -86,7 +86,8 @@ $.ajax({
     url: `${url}data`,
     success: function (response) {
         const data = response.data
-        data.forEach(el =>{
+        if (response.existing === false) {
+            data.forEach(el =>{
             for (const [question , answers] of Object.entries(el)) {
                 quizBox.innerHTML += `
                     <hr>
@@ -105,6 +106,17 @@ $.ajax({
             }
         })
         activateTimer(response.time)
+        }else{
+                resultBox.innerHTML = `
+                <div id="message" class="container">
+                <div class="alert alert-danger" role="alert">
+                    you already Taked this Quiz.
+                </div>
+                </div>
+            `            
+            quizForm.classList.add('d-none')
+        }
+        
     },
     error:function(error){
         console.log(error);
